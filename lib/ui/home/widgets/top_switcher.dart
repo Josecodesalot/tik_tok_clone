@@ -8,45 +8,46 @@ class TopSwitcher extends StatefulWidget {
 }
 
 class _TopSwitcherState extends State<TopSwitcher> {
-  bool isFollowing = false;
+  bool followingSelected = false;
 
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     return Container(
-        margin: const EdgeInsets.only(top: 16),
-        alignment: Alignment.topCenter,
-        child: Container(
-          width: 190,
-          child: Stack(
-            children: <Widget>[
-              Positioned(
-                  left: 0,
-                  bottom: height * 0.9,
-                  child: _selectedText('Following', true)),
-              Container(
-                  alignment: Alignment.topCenter,
-                  padding: const EdgeInsets.only(top: 20, left: 12),
-                  child: _spacer()),
-              Positioned(
-                  right: 0,
-                  bottom: height * 0.9,
-                  child: _selectedText('For You', false)),
-            ],
-          ),
-        ));
+      margin: const EdgeInsets.only(top: 16),
+      alignment: Alignment.topCenter,
+      child: Container(
+        width: 190,
+        child: Stack(
+          children: <Widget>[
+            Positioned(
+                left: 0,
+                bottom: height * 0.9,
+                child: _selectedText('Following', true)),
+            Container(
+                alignment: Alignment.topCenter,
+                padding: const EdgeInsets.only(top: 20, left: 12),
+                child: _spacer()),
+            Positioned(
+                right: 0,
+                bottom: height * 0.9,
+                child: _selectedText('For You', false)),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget _selectedText(
-    String s,
-    bool isFollowing,
+    String name,
+    bool namedFollowing,
   ) {
-    var isSelected = isFollowing == this.isFollowing;
+    var isSelected = namedFollowing == this.followingSelected;
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
         setState(() {
-          if (!isSelected) this.isFollowing = isFollowing;
+          if (!isSelected) this.followingSelected = namedFollowing;
         });
       },
       child: AnimatedDefaultTextStyle(
@@ -56,10 +57,9 @@ class _TopSwitcherState extends State<TopSwitcher> {
             color:
                 isSelected ? Colors.white : Colors.grey[300].withOpacity(0.8),
             fontWeight: FontWeight.w500,
-            fontSize: isSelected ? 20 : 17),
+            fontSize: isSelected ? 20 : 18),
         child: Text(
-          s,
-          textAlign: TextAlign.center,
+          namedFollowing ? 'Following' : 'For You',
         ),
       ),
     );

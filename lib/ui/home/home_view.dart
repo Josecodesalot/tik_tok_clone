@@ -13,21 +13,17 @@ class HomeView extends StatelessWidget {
       backgroundColor: Colors.black,
       body: Padding(
         padding: EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top),
-        child: Stack(
+        child: PageView(
+          scrollDirection: Axis.horizontal,
           children: <Widget>[
-            PageView(
-              scrollDirection: Axis.horizontal,
-              children: <Widget>[
-                MainContentControl(),
-                Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'User Profile here',
-                    style: baseStyle,
-                  ),
-                ),
-              ],
-            )
+            MainContentControl(),
+            Container(
+              alignment: Alignment.center,
+              child: Text(
+                'User Profile here',
+                style: baseStyle,
+              ),
+            ),
           ],
         ),
       ),
@@ -64,6 +60,7 @@ class MainContentLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
     return PageView(
       scrollDirection: Axis.vertical,
       children: List.generate(5, (index) {
@@ -82,22 +79,20 @@ class ContentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _roundTheCorners(
-      radius: 8.0,
-      child: Container(
-        padding: const EdgeInsets.only(bottom: .5),
-        child: Stack(
-          fit: StackFit.expand,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(bottom: bottomNavHeight),
-              child: _roundTheCorners(
-                  radius: 6.0,
-                  child: FullScreenVideo('assets/videos/video0.mp4')),
+    return Container(
+      padding: const EdgeInsets.only(bottom: .5),
+      child: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(bottom: bottomNavHeight),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: FullScreenVideo('assets/videos/video0.mp4'),
             ),
-            SideActions(),
-          ],
-        ),
+          ),
+          SideActions(),
+        ],
       ),
     );
   }
