@@ -53,6 +53,7 @@ class MainContentView extends StatelessWidget {
 }
 
 class ContentView extends StatelessWidget {
+  final bottomNavHeight = 64.0;
   @override
   Widget build(BuildContext context) {
     return _roundTheCorners(
@@ -62,7 +63,7 @@ class ContentView extends StatelessWidget {
         children: <Widget>[
           FullScreenVideo('assets/videos/video0.mp4'),
           SideActions(),
-          BottomNavigation(),
+          BottomNavigation(bottomNavHeight),
         ],
       ),
     );

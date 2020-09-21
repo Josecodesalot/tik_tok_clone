@@ -10,29 +10,30 @@ class AddButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 50,
-      width: 80,
       margin: const EdgeInsets.symmetric(horizontal: 6),
       alignment: Alignment.center,
-      child: SizedBox(
-        height: 35,
+      child: Container(
+        alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(horizontal: 6),
+        height: 30,
         child: Stack(
           fit: StackFit.expand,
           children: <Widget>[
             Container(
-              margin: const EdgeInsets.only(right: 4),
+              margin: const EdgeInsets.only(right: 8),
               decoration: decoration.copyWith(color: Colors.blue),
             ),
             Container(
-              margin: const EdgeInsets.only(left: 4),
+              margin: const EdgeInsets.only(left: 8),
               decoration: decoration.copyWith(color: Colors.red),
             ),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 4),
               alignment: Alignment.center,
-              decoration: decoration.copyWith(color: Colors.black),
+              decoration: decoration.copyWith(color: Colors.white),
               child: Text(
                 '+',
-                style: baseStyle.copyWith(fontSize: 20),
+                style: baseStyle.copyWith(fontSize: 24, color: Colors.black),
               ),
             ),
           ],

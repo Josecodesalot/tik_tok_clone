@@ -3,14 +3,19 @@ import 'package:tik_tok_clone/ui/constants/stules.dart';
 import 'package:tik_tok_clone/ui/home/widgets/add_button.dart';
 
 class BottomNavigation extends StatelessWidget {
+  final bottomNavHeight;
+
+  BottomNavigation(this.bottomNavHeight);
+
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        height: 75,
-        color: Colors.black,
+        height: bottomNavHeight,
+        decoration: BoxDecoration(
+            color: Colors.black,
+            border: Border(top: BorderSide(color: Colors.white, width: .5))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[

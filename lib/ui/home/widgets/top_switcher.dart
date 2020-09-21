@@ -14,7 +14,7 @@ class _TopSwitcherState extends State<TopSwitcher> {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     return Container(
-        margin: const EdgeInsets.only(top: 8),
+        margin: const EdgeInsets.only(top: 16),
         height: 70,
         alignment: Alignment.topCenter,
         child: Container(
@@ -47,7 +47,7 @@ class _TopSwitcherState extends State<TopSwitcher> {
           style: TextStyle(
               color: isSelected ? Colors.white : Colors.grey[300],
               fontWeight: FontWeight.w500,
-              fontSize: isSelected ? 17 : 15),
+              fontSize: isSelected ? 20 : 17),
           child: Text(s)),
     );
   }
