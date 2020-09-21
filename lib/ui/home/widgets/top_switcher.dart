@@ -18,7 +18,7 @@ class _TopSwitcherState extends State<TopSwitcher> {
         height: 70,
         alignment: Alignment.topCenter,
         child: Container(
-          width: 200,
+          width: 180,
           child: Stack(
             children: <Widget>[
               Positioned(left: 0, child: _selectedText('Following', true)),
@@ -45,7 +45,8 @@ class _TopSwitcherState extends State<TopSwitcher> {
           duration: kDuration550,
           curve: Sprung.underDamped,
           style: TextStyle(
-              color: isSelected ? Colors.white : Colors.grey[300],
+              color:
+                  isSelected ? Colors.white : Colors.grey[300].withOpacity(0.8),
               fontWeight: FontWeight.w500,
               fontSize: isSelected ? 20 : 17),
           child: Text(s)),
