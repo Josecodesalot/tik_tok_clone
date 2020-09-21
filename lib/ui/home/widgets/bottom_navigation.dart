@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tik_tok_clone/ui/constants/stules.dart';
+import 'package:tik_tok_clone/ui/constants/styles.dart';
 import 'package:tik_tok_clone/ui/home/widgets/add_button.dart';
 
 class BottomNavigation extends StatelessWidget {
@@ -15,7 +15,7 @@ class BottomNavigation extends StatelessWidget {
         height: bottomNavHeight,
         decoration: BoxDecoration(
             color: Colors.black,
-            border: Border(top: BorderSide(color: Colors.white, width: .5))),
+            border: Border(top: BorderSide(color: Colors.white, width: .15))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[

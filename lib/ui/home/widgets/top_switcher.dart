@@ -12,18 +12,26 @@ class _TopSwitcherState extends State<TopSwitcher> {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return Container(
         margin: const EdgeInsets.only(top: 16),
-        height: 70,
         alignment: Alignment.topCenter,
         child: Container(
-          width: 180,
+          width: 190,
           child: Stack(
             children: <Widget>[
-              Positioned(left: 0, child: _selectedText('Following', true)),
-              Align(alignment: Alignment.topCenter, child: _spacer()),
-              Positioned(right: 0, child: _selectedText('For You', false)),
+              Positioned(
+                  left: 0,
+                  bottom: height * 0.9,
+                  child: _selectedText('Following', true)),
+              Container(
+                  alignment: Alignment.topCenter,
+                  padding: const EdgeInsets.only(top: 20, left: 12),
+                  child: _spacer()),
+              Positioned(
+                  right: 0,
+                  bottom: height * 0.9,
+                  child: _selectedText('For You', false)),
             ],
           ),
         ));
@@ -42,25 +50,28 @@ class _TopSwitcherState extends State<TopSwitcher> {
         });
       },
       child: AnimatedDefaultTextStyle(
-          duration: kDuration550,
-          curve: Sprung.underDamped,
-          style: TextStyle(
-              color:
-                  isSelected ? Colors.white : Colors.grey[300].withOpacity(0.8),
-              fontWeight: FontWeight.w500,
-              fontSize: isSelected ? 20 : 17),
-          child: Text(s)),
+        duration: kDuration550,
+        curve: Sprung.underDamped,
+        style: TextStyle(
+            color:
+                isSelected ? Colors.white : Colors.grey[300].withOpacity(0.8),
+            fontWeight: FontWeight.w500,
+            fontSize: isSelected ? 20 : 17),
+        child: Text(
+          s,
+          textAlign: TextAlign.center,
+        ),
+      ),
     );
   }
 
   Widget _spacer() {
-    return Container(
-      padding: const EdgeInsets.only(top: 4),
-      child: Text(
-        '|',
-        style: TextStyle(
-            fontSize: 8, color: Colors.grey[400], fontWeight: FontWeight.w600),
-      ),
+    return Text(
+      '|',
+      style: TextStyle(
+          fontSize: 8,
+          color: Colors.grey[300].withOpacity(0.6),
+          fontWeight: FontWeight.w600),
     );
   }
 }

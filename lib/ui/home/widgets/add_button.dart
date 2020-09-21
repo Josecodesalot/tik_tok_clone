@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tik_tok_clone/ui/constants/stules.dart';
+import 'package:tik_tok_clone/ui/constants/styles.dart';
 
 class AddButton extends StatelessWidget {
   final space = 6.0;
