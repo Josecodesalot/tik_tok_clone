@@ -38,17 +38,13 @@ class MainContentControl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MainModel>(
-      builder: (_, model, child) {
-        return Stack(
-          fit: StackFit.expand,
-          children: <Widget>[
-            MainContentLayout(bottomNavHeight),
-            TopSwitcher(),
-            BottomNavigation(bottomNavHeight),
-          ],
-        );
-      },
+    return Stack(
+      fit: StackFit.expand,
+      children: <Widget>[
+        MainContentLayout(bottomNavHeight),
+        TopSwitcher(),
+        BottomNavigation(bottomNavHeight),
+      ],
     );
   }
 }

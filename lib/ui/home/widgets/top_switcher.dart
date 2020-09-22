@@ -12,7 +12,7 @@ class _TopSwitcherState extends State<TopSwitcher> {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
+    final height = MediaQuery.of(context).size.height;
     return Container(
       margin: const EdgeInsets.only(top: 16),
       alignment: Alignment.topCenter,
@@ -23,32 +23,31 @@ class _TopSwitcherState extends State<TopSwitcher> {
             Positioned(
                 left: 0,
                 bottom: height * 0.9,
-                child: _selectedText('Following', true)),
+                child: _selectedText(namedFollowing: true)),
             Container(
                 alignment: Alignment.topCenter,
                 padding: const EdgeInsets.only(top: 20, left: 12),
-                child: _spacer()),
+                child: _separator()),
             Positioned(
                 right: 0,
                 bottom: height * 0.9,
-                child: _selectedText('For You', false)),
+                child: _selectedText(namedFollowing: false)),
           ],
         ),
       ),
     );
   }
 
-  Widget _selectedText(
-    String name,
-    bool namedFollowing,
-  ) {
+  Widget _selectedText({bool namedFollowing}) {
     var isSelected = namedFollowing == this.followingSelected;
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
-        setState(() {
-          if (!isSelected) this.followingSelected = namedFollowing;
-        });
+        if (!isSelected) {
+          setState(() {
+            this.followingSelected = namedFollowing;
+          });
+        }
       },
       child: AnimatedDefaultTextStyle(
         duration: kDuration550,
@@ -65,7 +64,7 @@ class _TopSwitcherState extends State<TopSwitcher> {
     );
   }
 
-  Widget _spacer() {
+  Widget _separator() {
     return Text(
       '|',
       style: TextStyle(
