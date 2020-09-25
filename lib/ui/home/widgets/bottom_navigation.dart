@@ -14,8 +14,11 @@ class BottomNavigation extends StatelessWidget {
       child: Container(
         height: bottomNavHeight,
         decoration: BoxDecoration(
-            color: Colors.black,
-            border: Border(top: BorderSide(color: Colors.white, width: .15))),
+          color: Colors.black,
+          border: Border(
+            top: BorderSide(color: Colors.white, width: .15),
+          ),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -54,7 +57,7 @@ class BottomNavigation extends StatelessWidget {
           height: 4,
         ),
         Text(
-          "something",
+          "${title}",
           style: baseStyle.copyWith(fontSize: 8, color: Colors.white),
         )
       ],

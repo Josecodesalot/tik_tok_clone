@@ -56,7 +56,6 @@ class MainContentLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
     return PageView(
       scrollDirection: Axis.vertical,
       children: List.generate(5, (index) {

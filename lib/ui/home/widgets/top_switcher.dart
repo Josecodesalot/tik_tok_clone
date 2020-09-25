@@ -39,7 +39,7 @@ class _TopSwitcherState extends State<TopSwitcher> {
   }
 
   Widget _selectedText({bool namedFollowing}) {
-    var isSelected = namedFollowing == this.followingSelected;
+    final isSelected = namedFollowing == this.followingSelected;
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
