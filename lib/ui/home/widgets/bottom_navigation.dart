@@ -43,7 +43,7 @@ class BottomNavigation extends StatelessWidget {
     );
   }
 
-  _item(String title, {IconData icon}) {
+  Widget _item(String title, {IconData icon}) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,

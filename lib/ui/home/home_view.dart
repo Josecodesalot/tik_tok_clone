@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:tik_tok_clone/ui/constants/styles.dart';
+import 'package:tik_tok_clone/ui/constants/ui_const.dart';
 import 'package:tik_tok_clone/ui/home/widgets/bottom_navigation.dart';
 import 'package:tik_tok_clone/ui/home/widgets/top_switcher.dart';
 import 'package:tik_tok_clone/ui/widgets/full_screen_video.dart';
-import 'package:tik_tok_clone/view_model/main_model.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -103,7 +102,77 @@ class ContentView extends StatelessWidget {
 class SideActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final height = MediaQuery.of(context).size.height;
+    return Container(
+      padding: const EdgeInsets.only(right: 16),
+      alignment: Alignment.centerRight,
+      child: Column(children: <Widget>[
+        Spacer(),
+        _profileButton(),
+        _sideButton("1233"),
+        _sideButton("1233"),
+        _sideButton("1233"),
+        SizedBox(
+          height: height * 0.3,
+        )
+      ]),
+    );
+  }
+
+  Widget _sideButton(String count) {
+    return Column(
+      children: <Widget>[
+        Icon(
+          Icons.message,
+          color: Colors.white,
+          size: 32,
+        ),
+        const SizedBox(
+          height: 6,
+        ),
+        Text(
+          '$count',
+          style: baseStyle.copyWith(fontSize: 12),
+        ),
+        const SizedBox(
+          height: 24,
+        ),
+      ],
+    );
+  }
+
+  _profileButton() {
+    return Container(
+      height: 60,
+      width: 48,
+      margin: const EdgeInsets.only(bottom: 24),
+      child: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          Container(
+            decoration: roundDecoration.copyWith(
+              border: Border.all(color: Colors.white, width: 2.0),
+              color: Colors.black,
+            ),
+          ),
+          Container(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: 12,
+              width: 12,
+              alignment: Alignment.center,
+              decoration: roundDecoration.copyWith(
+                color: Colors.red,
+              ),
+              child: Text(
+                '+',
+                style: baseStyle,
+              ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
 
