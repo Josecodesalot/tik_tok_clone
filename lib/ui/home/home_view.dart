@@ -44,18 +44,38 @@ class Content extends StatelessWidget {
 class MainContentLayout extends StatelessWidget {
   MainContentLayout();
 
+  final videoUrls = <String>[
+    'assets/videos/video0.mov',
+    'assets/videos/video1.mov',
+    'assets/videos/video2.mov',
+    'assets/videos/video3.mov',
+    'assets/videos/video4.mov',
+  ];
+  final contentViews = <Widget>[
+    ContentView(videoUrl: 'assets/videos/video0.mov'),
+    ContentView(videoUrl: 'assets/videos/video1.mov'),
+    ContentView(videoUrl: 'assets/videos/video2.mov'),
+    ContentView(videoUrl: 'assets/videos/video3.mov'),
+    ContentView(videoUrl: 'assets/videos/video4.mov'),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return PageView(
-      scrollDirection: Axis.vertical,
-      children: List.generate(5, (index) {
-        return ContentView();
-      }),
-    );
+        scrollDirection: Axis.vertical,
+        children: videoUrls.map((String url) {
+          return ContentView(
+            videoUrl: url,
+          );
+        }).toList());
   }
 }
 
 class ContentView extends StatelessWidget {
+  final String videoUrl;
+
+  ContentView({@required this.videoUrl});
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -65,7 +85,7 @@ class ContentView extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: kBottomNavigationBarHeight),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: FullScreenVideo('assets/videos/video0.mp4'),
+            child: FullScreenVideo(videoUrl),
           ),
         ),
         SideActions(),
