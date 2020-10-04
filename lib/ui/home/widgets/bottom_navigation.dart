@@ -3,16 +3,12 @@ import 'package:tik_tok_clone/ui/constants/styles.dart';
 import 'package:tik_tok_clone/ui/home/widgets/add_button.dart';
 
 class BottomNavigation extends StatelessWidget {
-  final bottomNavHeight;
-
-  BottomNavigation(this.bottomNavHeight);
-
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        height: bottomNavHeight,
+        height: kBottomNavigationBarHeight,
         decoration: BoxDecoration(
           color: Colors.black,
           border: Border(
@@ -57,7 +53,7 @@ class BottomNavigation extends StatelessWidget {
           height: 4,
         ),
         Text(
-          "${title}",
+          "$title",
           style: baseStyle.copyWith(fontSize: 8, color: Colors.white),
         )
       ],

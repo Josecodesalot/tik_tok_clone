@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tik_tok_clone/ui/constants/styles.dart';
 import 'package:tik_tok_clone/ui/constants/ui_const.dart';
+import 'package:tik_tok_clone/ui/home/main_content_layout/video_info.dart';
 import 'package:tik_tok_clone/ui/home/widgets/bottom_navigation.dart';
 import 'package:tik_tok_clone/ui/home/widgets/top_switcher.dart';
 import 'package:tik_tok_clone/ui/widgets/full_screen_video.dart';
@@ -15,14 +16,8 @@ class HomeView extends StatelessWidget {
         child: PageView(
           scrollDirection: Axis.horizontal,
           children: <Widget>[
-            MainContentControl(),
-            Container(
-              alignment: Alignment.center,
-              child: Text(
-                'User Profile here',
-                style: baseStyle,
-              ),
-            ),
+            Content(),
+            UserInfoPage(),
           ],
         ),
       ),
@@ -32,69 +27,50 @@ class HomeView extends StatelessWidget {
 
 ///This class in incharge of controlling the stream for following and For You videos.
 ///
-class MainContentControl extends StatelessWidget {
-  final bottomNavHeight = 64.0;
-
+class Content extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
       fit: StackFit.expand,
       children: <Widget>[
-        MainContentLayout(bottomNavHeight),
+        MainContentLayout(),
         TopSwitcher(),
-        BottomNavigation(bottomNavHeight),
+        BottomNavigation(),
       ],
     );
   }
 }
 
 class MainContentLayout extends StatelessWidget {
-  final double bottomNavHeight;
-
-  MainContentLayout(this.bottomNavHeight);
+  MainContentLayout();
 
   @override
   Widget build(BuildContext context) {
     return PageView(
       scrollDirection: Axis.vertical,
       children: List.generate(5, (index) {
-        return ContentView(
-          bottomNavHeight: bottomNavHeight,
-        );
+        return ContentView();
       }),
     );
   }
 }
 
 class ContentView extends StatelessWidget {
-  final double bottomNavHeight;
-
-  ContentView({this.bottomNavHeight});
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(bottom: .5),
-      child: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(bottom: bottomNavHeight),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: FullScreenVideo('assets/videos/video0.mp4'),
-            ),
+    return Stack(
+      fit: StackFit.expand,
+      children: <Widget>[
+        Container(
+          padding: const EdgeInsets.only(bottom: kBottomNavigationBarHeight),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: FullScreenVideo('assets/videos/video0.mp4'),
           ),
-          SideActions(),
-        ],
-      ),
-    );
-  }
-
-  Widget _roundTheCorners({double radius, Widget child}) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(radius ?? 6.0),
-      child: child,
+        ),
+        SideActions(),
+        VideoInfo(),
+      ],
     );
   }
 }
@@ -125,7 +101,7 @@ class SideActions extends StatelessWidget {
         Icon(
           Icons.message,
           color: Colors.white,
-          size: 32,
+          size: 34,
         ),
         const SizedBox(
           height: 6,
@@ -150,10 +126,10 @@ class SideActions extends StatelessWidget {
         fit: StackFit.expand,
         children: <Widget>[
           Container(
-            decoration: roundDecoration.copyWith(
-              border: Border.all(color: Colors.white, width: 2.0),
-              color: Colors.black,
-            ),
+            decoration: kRoundDecoration.copyWith(
+                border: Border.all(color: Colors.white, width: 2.0),
+                color: Colors.black,
+                image: DecorationImage(image: NetworkImage(kPlaceHolderImage))),
           ),
           Container(
             alignment: Alignment.bottomCenter,
@@ -161,7 +137,7 @@ class SideActions extends StatelessWidget {
               height: 12,
               width: 12,
               alignment: Alignment.center,
-              decoration: roundDecoration.copyWith(
+              decoration: kRoundDecoration.copyWith(
                 color: Colors.red,
               ),
               child: Text(
@@ -179,6 +155,12 @@ class SideActions extends StatelessWidget {
 class UserInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Container(
+      alignment: Alignment.center,
+      child: Text(
+        'User Profile here',
+        style: baseStyle,
+      ),
+    );
   }
 }

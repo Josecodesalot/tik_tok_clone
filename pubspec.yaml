@@ -13,6 +13,7 @@ dependencies:
   provider: any
   video_player: 0.10.12+3
   sprung: 2.0.0+12
+  marquee: 1.6.1
 
 
 
