@@ -9,16 +9,16 @@ extension xTikTOk on TikTok {
   TikTok generate() {
     final randomDownloads = getRandomNumber(upTo: 999999);
     return TikTok(
-      key: firebasePushKey(kTikTokPath),
-      videoUrl: 'video${getRandomNumber(upTo: 5)}.mov',
-      likes: getRandomNumber(upTo: 999999),
-      comments: (randomDownloads / 2).floor(),
-      shares: (randomDownloads / 2).floor(),
-      song: Song().generate(),
-      effect: Effect(effectName: "Some Effect"),
-      user: User().generate(),
-      description: kLoremIpsum,
-    );
+        key: firebasePushKey(kTikTokPath),
+        videoUrl: 'video${getRandomNumber(upTo: 5)}.mov',
+        likes: getRandomNumber(upTo: 999999),
+        comments: (randomDownloads / 2).floor(),
+        shares: (randomDownloads / 2).floor(),
+        song: Song().generate(),
+        effect: Effect(effectName: "Some Effect"),
+        user: User().generate(),
+        description: kLoremIpsum,
+        hashTags: _getRandomListOfHashTags());
   }
 }
 
@@ -44,6 +44,32 @@ extension xUser on User {
 extension _xString on List<String> {
   dynamic getRandomElement() => this[getRandomNumber(upTo: length)];
 }
+
+List<String> _getRandomListOfHashTags() {
+  return List<String>.generate(
+      getRandomNumber(upTo: 5), (index) => _mockHashTags.getRandomElement());
+}
+
+const _mockHashTags = [
+  '#funny',
+  '#androidStudio',
+  '#someone',
+  '#bestvideo',
+  '#chicken',
+  '#sadwich',
+  '#something',
+  '#somethingElse',
+  '#fly',
+  '#cool',
+  '#awesome',
+  '#awesome',
+  '#place',
+  '#item',
+  '#flutterisawesome',
+  '#iloveflutter',
+  '#ayheartflutter',
+  '#caballo',
+];
 
 const _mockSongs = <Song>[
   const Song(

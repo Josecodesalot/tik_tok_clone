@@ -12,6 +12,7 @@ class TikTok {
     @required this.user,
     @required this.shares,
     @required this.description,
+    @required this.hashTags,
   });
 
   final String key;
@@ -23,31 +24,36 @@ class TikTok {
   final Song song;
   final Effect effect;
   final User user;
+  final List<String> hashTags;
 
-  factory TikTok.fromJson(map) {
-    return TikTok(
+  factory TikTok.fromMap(Map<String, dynamic> map) {
+    return new TikTok(
       key: map['key'] as String,
       description: map['description'] as String,
       videoUrl: map['videoUrl'] as String,
-      likes: map['downloads'] as int,
+      likes: map['likes'] as int,
       comments: map['comments'] as int,
+      shares: map['shares'] as int,
       song: map['song'] as Song,
       effect: map['effect'] as Effect,
       user: map['user'] as User,
+      hashTags: map['hashTags'] as List<String>,
     );
   }
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     // ignore: unnecessary_cast
     return {
       'key': this.key,
       'description': this.description,
       'videoUrl': this.videoUrl,
-      'downloads': this.likes,
+      'likes': this.likes,
       'comments': this.comments,
+      'shares': this.shares,
       'song': this.song,
       'effect': this.effect,
       'user': this.user,
+      'hashTags': this.hashTags,
     } as Map<String, dynamic>;
   }
 }
