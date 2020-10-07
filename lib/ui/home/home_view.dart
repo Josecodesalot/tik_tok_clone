@@ -37,7 +37,7 @@ class Content extends StatelessWidget {
     return Stack(
       fit: StackFit.expand,
       children: <Widget>[
-        MainContentLayout(),
+        ContentView(),
         TopSwitcher(),
         BottomNavigation(),
       ],
@@ -45,39 +45,27 @@ class Content extends StatelessWidget {
   }
 }
 
-class MainContentLayout extends StatelessWidget {
-  MainContentLayout();
-
+class ContentView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
         scrollDirection: Axis.vertical,
         itemBuilder: (_, index) {
-          return ContentView(tikTok: TikTok().generate());
+          final tikTok = TikTok().generate();
+          return Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              Container(
+                child: ClipPath(
+                  clipper: CustomClipTheVideo(),
+                  child: FullScreenVideo('assets/videos/${tikTok.videoUrl}'),
+                ),
+              ),
+              SideActions(tikTok),
+              VideoInfo(tikTok),
+            ],
+          );
         });
-  }
-}
-
-class ContentView extends StatelessWidget {
-  final TikTok tikTok;
-
-  ContentView({@required this.tikTok});
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      fit: StackFit.expand,
-      children: <Widget>[
-        Container(
-          child: ClipPath(
-            clipper: CustomClipTheVideo(),
-            child: FullScreenVideo('assets/videos/${tikTok.videoUrl}'),
-          ),
-        ),
-        SideActions(tikTok),
-        VideoInfo(tikTok),
-      ],
-    );
   }
 }
 

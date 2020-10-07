@@ -18,6 +18,7 @@ class _FullScreenVideoState extends State<FullScreenVideo> {
     _controller = VideoPlayerController.asset(
       widget.asset,
     )..initialize().then((_) {
+        print("${widget.asset} playing");
         setState(() {
           _controller.play();
           _controller.setLooping(true);
