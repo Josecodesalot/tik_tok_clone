@@ -107,7 +107,7 @@ class SideActions extends StatelessWidget {
               width: 18,
               padding: EdgeInsets.all(5),
               decoration: kRoundDecoration.copyWith(
-                color: Colors.red,
+                color: kRedAccent,
               ),
               child: CustomPaint(
                 painter: _PlusPainter(),

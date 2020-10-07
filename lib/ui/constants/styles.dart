@@ -1,6 +1,2 @@
 import 'package:flutter/material.dart';
-
-final baseStyle = const TextStyle(
-  color: Colors.white,
-  fontSize: 12,
-);
+import 'package:google_fonts/google_fonts.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tik_tok_clone/ui/constants/styles.dart';
+import 'package:tik_tok_clone/ui/constants/ui_const.dart';
 
 class AddButton extends StatelessWidget {
   final space = 6.0;
@@ -16,11 +16,11 @@ class AddButton extends StatelessWidget {
         fit: StackFit.expand,
         children: <Widget>[
           Container(
-            decoration: decoration.copyWith(color: Colors.blue),
+            decoration: decoration.copyWith(color: kBlue),
           ),
           Container(
             margin: const EdgeInsets.only(left: 8),
-            decoration: decoration.copyWith(color: Colors.red),
+            decoration: decoration.copyWith(color: kRed),
           ),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 4),

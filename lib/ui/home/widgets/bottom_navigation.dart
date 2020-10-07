@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tik_tok_clone/ui/constants/styles.dart';
+import 'package:tik_tok_clone/ui/constants/ui_const.dart';
 import 'package:tik_tok_clone/ui/home/widgets/add_button.dart';
 
 class BottomNavigation extends StatelessWidget {

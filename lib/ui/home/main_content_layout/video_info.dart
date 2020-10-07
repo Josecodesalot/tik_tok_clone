@@ -18,8 +18,7 @@ class VideoInfo extends StatelessWidget {
       child: Container(
         width: width * 0.7,
         //bottom nav bar + padding (e=4y32)
-        padding:
-            const EdgeInsets.only(bottom: kBottonNavBarheight + 4, left: 32),
+        padding: const EdgeInsets.only(bottom: kBottonNavBarheight, left: 12),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
