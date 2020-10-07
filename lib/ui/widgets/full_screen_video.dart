@@ -4,7 +4,7 @@ import 'package:video_player/video_player.dart';
 class FullScreenVideo extends StatefulWidget {
   final String asset;
 
-  FullScreenVideo(this.asset);
+  FullScreenVideo(this.asset, {Key key}) : super(key: key);
 
   @override
   _FullScreenVideoState createState() => _FullScreenVideoState();
@@ -17,13 +17,7 @@ class _FullScreenVideoState extends State<FullScreenVideo> {
   void initState() {
     _controller = VideoPlayerController.asset(
       widget.asset,
-    )..initialize().then((_) {
-        print("${widget.asset} playing");
-        setState(() {
-          _controller.play();
-          _controller.setLooping(true);
-        });
-      });
+    );
     super.initState();
   }
 
@@ -32,28 +26,11 @@ class _FullScreenVideoState extends State<FullScreenVideo> {
     return FutureBuilder(
       future: _controller.initialize(),
       builder: (BuildContext context, _) {
+        print("${widget.asset} playing");
         _controller.play();
-        return LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-            final aspect = constraints.maxWidth / constraints.maxHeight;
-            return OverflowBox(
-              maxHeight: aspect > _controller.value.aspectRatio
-                  ? double.infinity
-                  : null,
-              maxWidth: aspect < _controller.value.aspectRatio
-                  ? double.infinity
-                  : null,
-              child: AspectRatio(
-                aspectRatio: _controller.value.aspectRatio,
-                child: ColoredBox(
-                  color: Colors.red,
-                  child: VideoPlayer(
-                    _controller,
-                  ),
-                ),
-              ),
-            );
-          },
+        _controller.setLooping(true);
+        return VideoPlayer(
+          _controller,
         );
       },
     );

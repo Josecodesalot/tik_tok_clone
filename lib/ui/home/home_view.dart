@@ -58,7 +58,10 @@ class ContentView extends StatelessWidget {
               Container(
                 child: ClipPath(
                   clipper: CustomClipTheVideo(),
-                  child: FullScreenVideo('assets/videos/${tikTok.videoUrl}'),
+                  child: FullScreenVideo(
+                    'assets/videos/${tikTok.videoUrl}',
+                    key: Key('${DateTime.now()}'),
+                  ),
                 ),
               ),
               SideActions(tikTok),
