@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tik_tok_clone/model/tik_tok.dart';
 import 'package:tik_tok_clone/ui/constants/styles.dart';
@@ -29,8 +28,9 @@ class HomeView extends StatelessWidget {
   }
 }
 
-///This class in incharge of controlling the stream for following and For You videos.
-///
+///This class in incharge of controlling the stream
+///for following and For You videos.
+
 class Content extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

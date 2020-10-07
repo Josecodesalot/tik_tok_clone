@@ -7,6 +7,7 @@ import 'package:tik_tok_clone/ui/constants/ui_const.dart';
 
 class VideoInfo extends StatelessWidget {
   final TikTok tikTok;
+
   VideoInfo(this.tikTok);
 
   @override
@@ -38,9 +39,10 @@ class VideoInfo extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: Container(
         height: 35,
-        padding: const EdgeInsets.only(bottom: 12),
+        alignment: Alignment.center,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Icon(
               Icons.library_music,
@@ -51,8 +53,19 @@ class VideoInfo extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                height: 35,
-                child: Marquee(style: baseStyle, text: tikTok.song.name),
+                alignment: Alignment.center,
+                child: Container(
+                  height: 16,
+                  alignment: Alignment.center,
+                  child: Marquee(
+                      scrollAxis: Axis.horizontal,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      blankSpace: 16.0,
+                      velocity: 24.0,
+                      startPadding: 10.0,
+                      style: baseStyle,
+                      text: tikTok.song.name),
+                ),
               ),
             )
           ],
