@@ -11,7 +11,6 @@ class AddButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 12),
-      height: 28,
       alignment: Alignment.center,
       child: AspectRatio(
         aspectRatio: 8.2 / 5,
@@ -30,7 +29,7 @@ class AddButton extends StatelessWidget {
               alignment: Alignment.center,
               decoration: decoration.copyWith(color: Colors.white),
               child: Transform.translate(
-                offset: Offset(.5, -3.8),
+                offset: Offset(.5, -3),
                 child: Text(
                   '+',
                   style: baseStyle.copyWith(

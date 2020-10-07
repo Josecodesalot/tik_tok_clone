@@ -15,7 +15,7 @@ class _TopSwitcherState extends State<TopSwitcher> {
     return Container(
       alignment: Alignment.topCenter,
       child: Container(
-        width: 190,
+        width: 180,
         child: LayoutBuilder(
           builder: (context, constraints) {
             final height = constraints.maxHeight;
@@ -27,8 +27,8 @@ class _TopSwitcherState extends State<TopSwitcher> {
                     bottom: height * 0.94,
                     child: _selectedText(namedFollowing: true)),
                 Positioned(
-                    left: (width / 2) + 4,
-                    bottom: height * 0.945,
+                    left: (width / 2) + 6,
+                    bottom: height * 0.947,
                     child: _separator()),
                 Positioned(
                     right: 0,
@@ -59,8 +59,8 @@ class _TopSwitcherState extends State<TopSwitcher> {
         style: baseStyle.copyWith(
             color:
                 isSelected ? Colors.white : Colors.grey[300].withOpacity(0.8),
-            fontWeight: FontWeight.w500,
-            fontSize: isSelected ? 20 : 18),
+            fontWeight: FontWeight.bold,
+            fontSize: isSelected ? 18 : 16),
         child: Text(
           namedFollowing ? 'Following' : 'For You',
         ),
@@ -74,7 +74,7 @@ class _TopSwitcherState extends State<TopSwitcher> {
       style: TextStyle(
           fontSize: 8,
           color: Colors.grey[300].withOpacity(0.6),
-          fontWeight: FontWeight.w600),
+          fontWeight: FontWeight.bold),
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tik_tok_clone/model/tik_tok.dart';
-import 'package:tik_tok_clone/ui/constants/styles.dart';
 import 'package:tik_tok_clone/ui/constants/ui_const.dart';
 import 'package:tik_tok_clone/ui/home/main_content_layout/video_info.dart';
 import 'package:tik_tok_clone/ui/home/widgets/bottom_navigation.dart';
