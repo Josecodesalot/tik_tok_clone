@@ -22,6 +22,4 @@ const kPlaceHolderImage =
 const kBottonNavBarheight = 64.0;
 
 final baseStyle = GoogleFonts.openSans(
-  color: Colors.white,
-  fontSize: 12,
-);
+    color: Colors.white, fontSize: 12.5, letterSpacing: .3);

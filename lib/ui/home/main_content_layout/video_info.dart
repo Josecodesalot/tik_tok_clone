@@ -54,7 +54,7 @@ class VideoInfo extends StatelessWidget {
               child: Container(
                 alignment: Alignment.center,
                 child: Container(
-                  height: 16,
+                  height: 18,
                   alignment: Alignment.center,
                   child: Marquee(
                       scrollAxis: Axis.horizontal,
@@ -88,11 +88,11 @@ class VideoInfo extends StatelessWidget {
 
   Widget _username() {
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
+      margin: const EdgeInsets.only(bottom: 8),
       child: Text(
         '@${tikTok.user.handle}',
         textAlign: TextAlign.start,
-        style: baseStyle.copyWith(fontWeight: FontWeight.w500),
+        style: baseStyle.copyWith(fontWeight: FontWeight.bold),
       ),
     );
   }

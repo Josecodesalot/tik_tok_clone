@@ -12,26 +12,29 @@ class AddButton extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 12),
       height: 30,
       alignment: Alignment.center,
-      child: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          Container(
-            decoration: decoration.copyWith(color: kBlue),
-          ),
-          Container(
-            margin: const EdgeInsets.only(left: 8),
-            decoration: decoration.copyWith(color: kRed),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 4),
-            alignment: Alignment.center,
-            decoration: decoration.copyWith(color: Colors.white),
-            child: Text(
-              '+',
-              style: baseStyle.copyWith(fontSize: 24, color: Colors.black),
+      child: AspectRatio(
+        aspectRatio: 7 / 4,
+        child: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            Container(
+              decoration: decoration.copyWith(color: kBlue),
             ),
-          ),
-        ],
+            Container(
+              margin: const EdgeInsets.only(left: 8),
+              decoration: decoration.copyWith(color: kRed),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 4),
+              alignment: Alignment.center,
+              decoration: decoration.copyWith(color: Colors.white),
+              child: Text(
+                '+',
+                style: baseStyle.copyWith(fontSize: 24, color: Colors.black),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

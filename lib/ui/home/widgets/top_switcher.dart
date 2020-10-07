@@ -56,7 +56,7 @@ class _TopSwitcherState extends State<TopSwitcher> {
       child: AnimatedDefaultTextStyle(
         duration: kDuration550,
         curve: Sprung.underDamped,
-        style: TextStyle(
+        style: baseStyle.copyWith(
             color:
                 isSelected ? Colors.white : Colors.grey[300].withOpacity(0.8),
             fontWeight: FontWeight.w500,

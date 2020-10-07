@@ -42,8 +42,14 @@ class SideActions extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(10),
           decoration: kRoundDecoration.copyWith(
-            color: Colors.black,
-          ),
+              color: Colors.grey,
+              gradient: LinearGradient(colors: [
+                Colors.black,
+                Colors.black,
+                Colors.grey,
+                Colors.black,
+                Colors.black,
+              ])),
           child: Container(
             decoration: kRoundDecoration.copyWith(
               image: DecorationImage(
