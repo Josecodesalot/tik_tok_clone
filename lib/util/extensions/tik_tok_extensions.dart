@@ -7,13 +7,13 @@ const int kNumberOfUserImg = 2;
 
 extension xTikTOk on TikTok {
   TikTok generate() {
-    final randomDownloads = getRandomNumber(upTo: 999999);
+    final randomDownloads = randomInt(upTo: 999);
     return TikTok(
         key: firebasePushKey(kTikTokPath),
-        videoUrl: 'video${getRandomNumber(upTo: 5)}.mov',
-        likes: getRandomNumber(upTo: 999999),
+        videoUrl: 'video${randomInt(upTo: 5)}.mov',
+        likes: randomInt(upTo: 999),
         comments: (randomDownloads / 2).floor(),
-        shares: (randomDownloads / 2).floor(),
+        shares: (randomDownloads / 4).floor(),
         song: Song().generate(),
         effect: Effect(effectName: "Some Effect"),
         user: User().generate(),
@@ -24,9 +24,9 @@ extension xTikTOk on TikTok {
 
 extension xSong on Song {
   Song generate() {
-    return _mockSongs[getRandomNumber(upTo: _mockSongs.length)].copyWith(
-      audioUrl: '${getRandomNumber(upTo: knumberOfMockSongs)}',
-      coverArtUrl: '${getRandomNumber(upTo: knumberOfMockSongs)}',
+    return _mockSongs[randomInt(upTo: _mockSongs.length)].copyWith(
+      audioUrl: '${randomInt(upTo: knumberOfMockSongs)}',
+      coverArtUrl: '${randomInt(upTo: knumberOfMockSongs)}',
     );
   }
 }
@@ -41,13 +41,16 @@ extension xUser on User {
   }
 }
 
+/// extension below is equvalent to
+/// _mockHashTags[randomInt(upTo: _mockHashTags.length];
+/// _mockHastags.getRandomElement()
 extension _xString on List<String> {
-  dynamic getRandomElement() => this[getRandomNumber(upTo: length)];
+  String getRandomElement() => this[randomInt(upTo: length)];
 }
 
 List<String> _getRandomListOfHashTags() {
   return List<String>.generate(
-      getRandomNumber(upTo: 5), (index) => _mockHashTags.getRandomElement());
+      randomInt(upTo: 5), (index) => _mockHashTags.getRandomElement());
 }
 
 const _mockHashTags = [

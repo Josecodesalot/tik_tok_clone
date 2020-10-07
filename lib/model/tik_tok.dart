@@ -42,7 +42,6 @@ class TikTok {
   }
 
   Map<String, dynamic> toMap() {
-    // ignore: unnecessary_cast
     return {
       'key': this.key,
       'description': this.description,
@@ -54,7 +53,7 @@ class TikTok {
       'effect': this.effect,
       'user': this.user,
       'hashTags': this.hashTags,
-    } as Map<String, dynamic>;
+    };
   }
 }
 

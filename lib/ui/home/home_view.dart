@@ -49,8 +49,9 @@ class ContentView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageView.builder(
         scrollDirection: Axis.vertical,
-        itemBuilder: (_, index) {
+        itemBuilder: (_, __) {
           final tikTok = TikTok().generate();
+
           return Stack(
             fit: StackFit.expand,
             children: <Widget>[
