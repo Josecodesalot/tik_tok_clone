@@ -16,6 +16,7 @@ class VideoInfo extends StatelessWidget {
       alignment: Alignment.bottomLeft,
       child: Container(
         width: width * 0.7,
+        //bottom nav bar + padding (e=4y32)
         padding:
             const EdgeInsets.only(bottom: kBottonNavBarheight + 4, left: 32),
         child: Column(
@@ -25,7 +26,7 @@ class VideoInfo extends StatelessWidget {
           children: <Widget>[
             _username(),
             _description(),
-            // _songData(),
+            _songData(),
           ],
         ),
       ),
@@ -41,15 +42,17 @@ class VideoInfo extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Icon(Icons.library_music),
+            Icon(
+              Icons.library_music,
+              color: Colors.white,
+            ),
+            SizedBox(
+              width: 4,
+            ),
             Expanded(
               child: Container(
                 height: 35,
-                child: Marquee(
-                  style: baseStyle,
-                  text:
-                      "Welcome to the junglsadasdfdfasdfsdf asdf asdf adsf asde - Guns n roses - awesome song bruh",
-                ),
+                child: Marquee(style: baseStyle, text: tikTok.song.name),
               ),
             )
           ],

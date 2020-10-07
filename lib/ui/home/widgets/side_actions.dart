@@ -38,7 +38,7 @@ class SideActions extends StatelessWidget {
       height: 50,
       width: 50,
       child: Rotate(
-        duration: Duration(milliseconds: 4000),
+        duration: Duration(milliseconds: 4500),
         child: Container(
           padding: EdgeInsets.all(10),
           decoration: kRoundDecoration.copyWith(
@@ -60,24 +60,27 @@ class SideActions extends StatelessWidget {
   }
 
   Widget _sideButton({IconData icon, int value}) {
-    return Column(
-      children: <Widget>[
-        Icon(
-          icon ?? Icons.message,
-          color: Colors.white,
-          size: 42,
-        ),
-        const SizedBox(
-          height: 2,
-        ),
-        Text(
-          '$value',
-          style: baseStyle.copyWith(fontSize: 12),
-        ),
-        const SizedBox(
-          height: 24,
-        ),
-      ],
+    return Opacity(
+      opacity: 0.7,
+      child: Column(
+        children: <Widget>[
+          Icon(
+            icon ?? Icons.message,
+            color: Colors.white,
+            size: 42,
+          ),
+          const SizedBox(
+            height: 2,
+          ),
+          Text(
+            '$value',
+            style: baseStyle.copyWith(fontSize: 12),
+          ),
+          const SizedBox(
+            height: 24,
+          ),
+        ],
+      ),
     );
   }
 

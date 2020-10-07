@@ -69,9 +69,8 @@ class ContentView extends StatelessWidget {
       fit: StackFit.expand,
       children: <Widget>[
         Container(
-          padding: const EdgeInsets.only(bottom: kBottomNavigationBarHeight),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(8.0),
+          child: ClipPath(
+            clipper: CustomClipTheVideo(),
             child: FullScreenVideo('assets/videos/${tikTok.videoUrl}'),
           ),
         ),
@@ -92,5 +91,19 @@ class UserInfoPage extends StatelessWidget {
         style: baseStyle,
       ),
     );
+  }
+}
+
+class CustomClipTheVideo extends CustomClipper<Path> {
+  @override
+  getClip(Size size) {
+    return Path()
+      ..addRRect(RRect.fromLTRBR(0, 0, size.width,
+          size.height - kBottonNavBarheight + 8, Radius.circular(8.0)));
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper oldClipper) {
+    return this != oldClipper;
   }
 }
