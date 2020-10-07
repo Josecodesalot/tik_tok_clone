@@ -1,10 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:tik_tok_clone/model/tik_tok.dart';
 import 'package:tik_tok_clone/ui/constants/styles.dart';
 import 'package:tik_tok_clone/ui/constants/ui_const.dart';
 import 'package:tik_tok_clone/ui/home/main_content_layout/video_info.dart';
 import 'package:tik_tok_clone/ui/home/widgets/bottom_navigation.dart';
 import 'package:tik_tok_clone/ui/home/widgets/top_switcher.dart';
 import 'package:tik_tok_clone/ui/widgets/full_screen_video.dart';
+import 'package:tik_tok_clone/util/extensions/tik_tok_extensions.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -44,37 +47,20 @@ class Content extends StatelessWidget {
 class MainContentLayout extends StatelessWidget {
   MainContentLayout();
 
-  final videoUrls = <String>[
-    'assets/videos/video0.mov',
-    'assets/videos/video1.mov',
-    'assets/videos/video2.mov',
-    'assets/videos/video3.mov',
-    'assets/videos/video4.mov',
-  ];
-  final contentViews = <Widget>[
-    ContentView(videoUrl: 'assets/videos/video0.mov'),
-    ContentView(videoUrl: 'assets/videos/video1.mov'),
-    ContentView(videoUrl: 'assets/videos/video2.mov'),
-    ContentView(videoUrl: 'assets/videos/video3.mov'),
-    ContentView(videoUrl: 'assets/videos/video4.mov'),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return PageView(
+    return PageView.builder(
         scrollDirection: Axis.vertical,
-        children: videoUrls.map((String url) {
-          return ContentView(
-            videoUrl: url,
-          );
-        }).toList());
+        itemBuilder: (_, index) {
+          return ContentView(tikTok: TikTok().generate());
+        });
   }
 }
 
 class ContentView extends StatelessWidget {
-  final String videoUrl;
+  final TikTok tikTok;
 
-  ContentView({@required this.videoUrl});
+  ContentView({@required this.tikTok});
 
   @override
   Widget build(BuildContext context) {
@@ -85,17 +71,21 @@ class ContentView extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: kBottomNavigationBarHeight),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: FullScreenVideo(videoUrl),
+            child: FullScreenVideo('assets/videos/${tikTok.videoUrl}'),
           ),
         ),
-        SideActions(),
-        VideoInfo(),
+        SideActions(tikTok),
+        VideoInfo(tikTok),
       ],
     );
   }
 }
 
 class SideActions extends StatelessWidget {
+  final TikTok tikTok;
+
+  SideActions(this.tikTok);
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -105,9 +95,9 @@ class SideActions extends StatelessWidget {
       child: Column(children: <Widget>[
         Spacer(),
         _profileButton(),
-        _sideButton("1233"),
-        _sideButton("1233"),
-        _sideButton("1233"),
+        _sideButton(icon: Icons.favorite, value: tikTok.likes),
+        _sideButton(icon: Icons.comment, value: tikTok.comments),
+        _sideButton(icon: Icons.share, value: tikTok.shares),
         SizedBox(
           height: height * 0.3,
         )
@@ -115,11 +105,11 @@ class SideActions extends StatelessWidget {
     );
   }
 
-  Widget _sideButton(String count) {
+  Widget _sideButton({IconData icon, int value}) {
     return Column(
       children: <Widget>[
         Icon(
-          Icons.message,
+          icon ?? Icons.message,
           color: Colors.white,
           size: 34,
         ),
@@ -127,7 +117,7 @@ class SideActions extends StatelessWidget {
           height: 6,
         ),
         Text(
-          '$count',
+          '$value',
           style: baseStyle.copyWith(fontSize: 12),
         ),
         const SizedBox(
@@ -149,7 +139,9 @@ class SideActions extends StatelessWidget {
             decoration: kRoundDecoration.copyWith(
                 border: Border.all(color: Colors.white, width: 2.0),
                 color: Colors.black,
-                image: DecorationImage(image: NetworkImage(kPlaceHolderImage))),
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: CachedNetworkImageProvider(tikTok.user.imgUrl))),
           ),
           Container(
             alignment: Alignment.bottomCenter,

@@ -12,27 +12,31 @@ class _TopSwitcherState extends State<TopSwitcher> {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
     return Container(
-      margin: const EdgeInsets.only(top: 16),
       alignment: Alignment.topCenter,
       child: Container(
         width: 190,
-        child: Stack(
-          children: <Widget>[
-            Positioned(
-                left: 0,
-                bottom: height * 0.9,
-                child: _selectedText(namedFollowing: true)),
-            Container(
-                alignment: Alignment.topCenter,
-                padding: const EdgeInsets.only(top: 20, left: 12),
-                child: _separator()),
-            Positioned(
-                right: 0,
-                bottom: height * 0.9,
-                child: _selectedText(namedFollowing: false)),
-          ],
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final height = constraints.maxHeight;
+            final width = constraints.maxWidth;
+            return Stack(
+              children: <Widget>[
+                Positioned(
+                    left: 0,
+                    bottom: height * 0.94,
+                    child: _selectedText(namedFollowing: true)),
+                Positioned(
+                    left: (width / 2) + 4,
+                    bottom: height * 0.945,
+                    child: _separator()),
+                Positioned(
+                    right: 0,
+                    bottom: height * 0.94,
+                    child: _selectedText(namedFollowing: false)),
+              ],
+            );
+          },
         ),
       ),
     );

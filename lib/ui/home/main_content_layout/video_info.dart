@@ -1,10 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
+import 'package:tik_tok_clone/model/tik_tok.dart';
 import 'package:tik_tok_clone/ui/constants/styles.dart';
 import 'package:tik_tok_clone/ui/constants/ui_const.dart';
 
 class VideoInfo extends StatelessWidget {
+  final TikTok tikTok;
+  VideoInfo(this.tikTok);
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -59,8 +63,8 @@ class VideoInfo extends StatelessWidget {
       alignment: Alignment.topLeft,
       margin: const EdgeInsets.only(bottom: 12),
       child: Text(
-        'Wow my video is so cool im in the water,'
-        ' cannot believe this is happening to me',
+        '${tikTok.description}',
+        maxLines: 3,
         textAlign: TextAlign.start,
         style: baseStyle,
       ),
@@ -71,7 +75,7 @@ class VideoInfo extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       child: Text(
-        '@username',
+        '@${tikTok.user.handle}',
         textAlign: TextAlign.start,
         style: baseStyle.copyWith(fontWeight: FontWeight.w500),
       ),

@@ -4,7 +4,7 @@ description: A new Flutter application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -14,8 +14,11 @@ dependencies:
   video_player: 0.10.12+3
   sprung: 2.0.0+12
   marquee: 1.6.1
-
-
+  firebase_core: ^0.5.0
+  firebase_auth: ^0.18.1+1
+  firebase_database: ^4.1.0
+  hive: ^1.4.4+1
+  cached_network_image: 2.3.2+1
 
   cupertino_icons: ^0.1.2
 
@@ -30,7 +33,7 @@ flutter:
   uses-material-design: true
 
   assets:
-  - assets/videos/
+    - assets/videos/
 
 
 

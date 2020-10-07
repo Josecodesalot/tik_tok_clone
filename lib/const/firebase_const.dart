@@ -1,0 +1,1 @@
+const kTikTokPath = 'tiktoks';
