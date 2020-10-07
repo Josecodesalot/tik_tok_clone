@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:tik_tok_clone/ui/constants/ui_const.dart';
 
 class AddButton extends StatelessWidget {
@@ -10,10 +11,10 @@ class AddButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 12),
-      height: 30,
+      height: 28,
       alignment: Alignment.center,
       child: AspectRatio(
-        aspectRatio: 7 / 4,
+        aspectRatio: 8.2 / 5,
         child: Stack(
           fit: StackFit.expand,
           children: <Widget>[
@@ -28,9 +29,15 @@ class AddButton extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 4),
               alignment: Alignment.center,
               decoration: decoration.copyWith(color: Colors.white),
-              child: Text(
-                '+',
-                style: baseStyle.copyWith(fontSize: 24, color: Colors.black),
+              child: Transform.translate(
+                offset: Offset(.5, -3.8),
+                child: Text(
+                  '+',
+                  style: baseStyle.copyWith(
+                      fontSize: 24,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ],
