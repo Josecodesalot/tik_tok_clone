@@ -71,17 +71,14 @@ class SideActions extends StatelessWidget {
           Icon(
             icon ?? Icons.message,
             color: Colors.white,
-            size: 42,
-          ),
-          const SizedBox(
-            height: 2,
+            size: 40,
           ),
           Text(
             '$value',
             style: baseStyle.copyWith(fontSize: 12),
           ),
           const SizedBox(
-            height: 20,
+            height: 18,
           ),
         ],
       ),
