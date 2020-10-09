@@ -3,6 +3,7 @@ import 'package:tik_tok_clone/model/tik_tok.dart';
 import 'package:tik_tok_clone/ui/constants/ui_const.dart';
 import 'package:tik_tok_clone/ui/home/main_content_layout/video_info.dart';
 import 'package:tik_tok_clone/ui/home/widgets/bottom_navigation.dart';
+import 'package:tik_tok_clone/ui/home/widgets/note.dart';
 import 'package:tik_tok_clone/ui/home/widgets/side_actions.dart';
 import 'package:tik_tok_clone/ui/home/widgets/top_switcher.dart';
 import 'package:tik_tok_clone/ui/widgets/full_screen_video.dart';
@@ -63,11 +64,28 @@ class ContentView extends StatelessWidget {
                 ),
               ),
             ),
+            MusicNoteLayer(),
             SideActions(tikTok),
             VideoInfo(tikTok),
           ],
         );
       },
+    );
+  }
+}
+
+class MusicNoteLayer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin:
+          EdgeInsets.only(bottom: kBottomNavigationBarHeight + 20, right: 60),
+      alignment: Alignment.bottomRight,
+      child: Notes(
+        height: 90,
+        width: 70,
+        duration: 1200,
+      ),
     );
   }
 }

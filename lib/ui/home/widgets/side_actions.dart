@@ -24,7 +24,7 @@ class SideActions extends StatelessWidget {
           SizedBox(height: 12),
           _spinningDisk(),
           SizedBox(
-            height: kBottonNavBarheight + 8,
+            height: kBottonNavBarheight + 4,
           )
         ],
       ),
@@ -33,21 +33,15 @@ class SideActions extends StatelessWidget {
 
   Widget _spinningDisk() {
     return Container(
-      height: 50,
-      width: 50,
+      height: 54,
+      width: 54,
       child: Rotate(
-        duration: Duration(milliseconds: 4500),
+        duration: Duration(milliseconds: 8500),
         child: Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(8.0),
           decoration: kRoundDecoration.copyWith(
-              color: Colors.grey,
-              gradient: LinearGradient(colors: [
-                Colors.black,
-                Colors.black,
-                Colors.grey,
-                Colors.black,
-                Colors.black,
-              ])),
+            color: Colors.black,
+          ),
           child: Container(
             decoration: kRoundDecoration.copyWith(
               image: DecorationImage(
@@ -87,8 +81,8 @@ class SideActions extends StatelessWidget {
 
   _profileButton() {
     return Container(
-      height: 72,
-      width: 56,
+      height: 70,
+      width: 54,
       margin: const EdgeInsets.only(bottom: 24),
       child: Stack(
         fit: StackFit.expand,
