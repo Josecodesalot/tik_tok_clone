@@ -5,7 +5,7 @@ import 'package:tik_tok_clone/util/util.dart';
 const int knumberOfMockSongs = 2;
 const int kNumberOfUserImg = 2;
 
-extension xTikTOk on TikTok {
+extension xTikTok on TikTok {
   TikTok generate() {
     final randomDownloads = randomInt(upTo: 999);
     return TikTok(

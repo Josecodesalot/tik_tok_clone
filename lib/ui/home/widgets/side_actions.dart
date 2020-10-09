@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tik_tok_clone/model/tik_tok.dart';
-import 'package:tik_tok_clone/ui/constants/styles.dart';
 import 'package:tik_tok_clone/ui/constants/ui_const.dart';
 import 'package:tik_tok_clone/ui/widgets/rotate.dart';
 
@@ -12,9 +11,8 @@ class SideActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
     return Container(
-      padding: const EdgeInsets.only(right: 16),
+      padding: const EdgeInsets.only(right: 8),
       alignment: Alignment.centerRight,
       child: Column(
         children: <Widget>[
@@ -26,7 +24,7 @@ class SideActions extends StatelessWidget {
           SizedBox(height: 12),
           _spinningDisk(),
           SizedBox(
-            height: kBottonNavBarheight + 12,
+            height: kBottonNavBarheight + 8,
           )
         ],
       ),
@@ -83,7 +81,7 @@ class SideActions extends StatelessWidget {
             style: baseStyle.copyWith(fontSize: 12),
           ),
           const SizedBox(
-            height: 24,
+            height: 20,
           ),
         ],
       ),
@@ -100,7 +98,7 @@ class SideActions extends StatelessWidget {
         children: <Widget>[
           Container(
             decoration: kRoundDecoration.copyWith(
-                border: Border.all(color: Colors.white, width: 2.0),
+                border: Border.all(color: Colors.white, width: 1.5),
                 color: Colors.black,
                 image: DecorationImage(
                     fit: BoxFit.cover,

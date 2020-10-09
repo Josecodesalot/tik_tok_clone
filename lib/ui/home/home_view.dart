@@ -48,27 +48,27 @@ class ContentView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
-        scrollDirection: Axis.vertical,
-        itemBuilder: (_, __) {
-          final tikTok = TikTok().generate();
+      scrollDirection: Axis.vertical,
+      itemBuilder: (_, __) {
+        final tikTok = TikTok().generate();
 
-          return Stack(
-            fit: StackFit.expand,
-            children: <Widget>[
-              Container(
-                child: ClipPath(
-                  clipper: CustomClipTheVideo(),
-                  child: FullScreenVideo(
-                    'assets/videos/${tikTok.videoUrl}',
-                    key: Key('${DateTime.now()}'),
-                  ),
+        return Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            Container(
+              child: ClipPath(
+                clipper: CustomClipTheVideo(),
+                child: FullScreenVideo(
+                  'assets/videos/${tikTok.videoUrl}',
                 ),
               ),
-              SideActions(tikTok),
-              VideoInfo(tikTok),
-            ],
-          );
-        });
+            ),
+            SideActions(tikTok),
+            VideoInfo(tikTok),
+          ],
+        );
+      },
+    );
   }
 }
 
