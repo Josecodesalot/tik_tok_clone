@@ -19,8 +19,9 @@ class SideActions extends StatelessWidget {
           Spacer(),
           _profileButton(),
           _sideButton(icon: Icons.favorite, value: tikTok.likes),
-          _sideButton(icon: Icons.comment, value: tikTok.comments),
-          _sideButton(icon: Icons.share, value: tikTok.shares),
+          _sideButton(
+              custom: _assetImage(kCommentsIconPng), value: tikTok.comments),
+          _sideButton(custom: _assetImage(kShareIconPng), value: tikTok.shares),
           SizedBox(height: 12),
           _spinningDisk(),
           SizedBox(
@@ -28,6 +29,16 @@ class SideActions extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+
+  Widget _assetImage(String asset) {
+    return ImageIcon(
+      AssetImage(
+        asset,
+      ),
+      color: Colors.white,
+      size: 37,
     );
   }
 
@@ -57,16 +68,17 @@ class SideActions extends StatelessWidget {
     );
   }
 
-  Widget _sideButton({IconData icon, int value}) {
+  Widget _sideButton({IconData icon, int value, Widget custom}) {
     return Opacity(
       opacity: 0.7,
       child: Column(
         children: <Widget>[
-          Icon(
-            icon ?? Icons.message,
-            color: Colors.white,
-            size: 40,
-          ),
+          custom ??
+              Icon(
+                icon ?? Icons.message,
+                color: Colors.white,
+                size: 42,
+              ),
           Text(
             '$value',
             style: baseStyle.copyWith(fontSize: 12),
@@ -82,7 +94,7 @@ class SideActions extends StatelessWidget {
   _profileButton() {
     return Container(
       height: 70,
-      width: 54,
+      width: 50,
       margin: const EdgeInsets.only(bottom: 24),
       child: Stack(
         fit: StackFit.expand,

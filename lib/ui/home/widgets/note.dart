@@ -46,7 +46,7 @@ class MusicNote extends StatelessWidget {
   }
 }
 
-enum AniProps { width, height, fade, rotation, size, skewY }
+enum AniProps { width, height, fade, rotation, size, skewY, skewX }
 
 class NoteAnimator extends StatelessWidget {
   final int duration;
@@ -64,7 +64,8 @@ class NoteAnimator extends StatelessWidget {
           ..add(AniProps.height, 1.0.tweenTo(0.0), (duration * 2).milliseconds)
           ..add(AniProps.fade, 1.0.tweenTo(0.0), (duration * 2).milliseconds)
           ..add(AniProps.size, 0.4.tweenTo(1.0), (duration * 2).milliseconds)
-          ..add(AniProps.skewY, 0.0.tweenTo(0.4), (duration * 2).milliseconds)
+          ..add(AniProps.skewY, 0.0.tweenTo(0.2), (duration * 2).milliseconds)
+          ..add(AniProps.skewX, 0.0.tweenTo(0.5), (duration * 2).milliseconds)
           ..add(AniProps.rotation, 0.0.tweenTo(1.1),
               (duration * (first ? 2 : 1.5)).toInt().milliseconds);
 
@@ -88,8 +89,10 @@ class NoteAnimator extends StatelessWidget {
                   child: Transform.scale(
                     scale: value.get(AniProps.size),
                     child: Transform(
-                      transform: Matrix4.skewX(value.get(AniProps.skewY)),
-                      child: MusicNote(),
+                      transform: Matrix4.skewX(value.get(AniProps.skewX)),
+                      child: Transform(
+                          transform: Matrix4.skewY(value.get(AniProps.skewY)),
+                          child: MusicNote()),
                     ),
                   ),
                 ),

@@ -13,8 +13,13 @@ const kRed = Color(0xfffa4f38);
 const kRedAccent = Color(0xffff3662);
 const kBlue = Color(0xff299afc);
 
-const kImagePath = 'assets/videos';
+const kVideoPath = 'assets/videos';
+const kImagesPath = 'assets/images';
 const kvideo0 = 'assets/videos/video0.mp4';
+const kShareIconPng = 'assets/images/shares.png';
+const kShareIconSvg = 'assets/images/shares.svg';
+const kCommentsIconPng = 'assets/images/comments.png';
+const kCommentsIconSvg = 'assets/images/comments.svg';
 
 const kPlaceHolderImage =
     "https://i.insider.com/5b508eeffd0b91230d8b46d6?width=600&format=jpeg&auto=webp";
