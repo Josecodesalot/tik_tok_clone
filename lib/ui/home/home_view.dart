@@ -79,7 +79,7 @@ class MusicNoteLayer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin:
-          EdgeInsets.only(bottom: kBottomNavigationBarHeight + 20, right: 60),
+          EdgeInsets.only(bottom: kBottomNavigationBarHeight + 24, right: 56),
       alignment: Alignment.bottomRight,
       child: Notes(
         height: 90,

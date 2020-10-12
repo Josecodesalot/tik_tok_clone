@@ -7,6 +7,7 @@ class AddButton extends StatelessWidget {
   final decoration = BoxDecoration(
     borderRadius: BorderRadius.circular(8),
   );
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,16 +27,13 @@ class AddButton extends StatelessWidget {
             ),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 4),
-              alignment: Alignment.center,
               decoration: decoration.copyWith(color: Colors.white),
-              child: Transform.translate(
-                offset: Offset(.5, -3),
-                child: Text(
-                  '+',
-                  style: baseStyle.copyWith(
-                      fontSize: 24,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
+              alignment: Alignment.center,
+              child: SizedBox(
+                width: 16,
+                height: 16,
+                child: CustomPaint(
+                  painter: _CustomCross(color: Colors.black),
                 ),
               ),
             ),
@@ -43,5 +41,27 @@ class AddButton extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class _CustomCross extends CustomPainter {
+  _CustomCross({this.color});
+
+  Color color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = 2.8;
+    canvas.drawLine(
+        Offset(size.width / 2, 0), Offset(size.width / 2, size.height), paint);
+    canvas.drawLine(
+        Offset(0, size.height / 2), Offset(size.width, size.height / 2), paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return this != oldDelegate;
   }
 }

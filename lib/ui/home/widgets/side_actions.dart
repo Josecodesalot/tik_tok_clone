@@ -70,7 +70,7 @@ class SideActions extends StatelessWidget {
 
   Widget _sideButton({IconData icon, int value, Widget custom}) {
     return Opacity(
-      opacity: 0.7,
+      opacity: 0.9,
       child: Column(
         children: <Widget>[
           custom ??
@@ -93,7 +93,7 @@ class SideActions extends StatelessWidget {
 
   _profileButton() {
     return Container(
-      height: 70,
+      height: 64,
       width: 50,
       margin: const EdgeInsets.only(bottom: 24),
       child: Stack(

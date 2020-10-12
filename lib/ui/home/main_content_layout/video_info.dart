@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marquee/marquee.dart';
 import 'package:tik_tok_clone/model/tik_tok.dart';
 import 'package:tik_tok_clone/ui/constants/styles.dart';
@@ -44,17 +45,18 @@ class VideoInfo extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Icon(
-              Icons.library_music,
+              FontAwesomeIcons.itunesNote,
               color: Colors.white,
+              size: 17,
             ),
             SizedBox(
-              width: 4,
+              width: 6,
             ),
             Expanded(
               child: Container(
                 alignment: Alignment.center,
                 child: Container(
-                  height: 18,
+                  height: 15,
                   alignment: Alignment.center,
                   child: Marquee(
                       scrollAxis: Axis.horizontal,

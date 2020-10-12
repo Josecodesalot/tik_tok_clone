@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
 
@@ -23,12 +24,14 @@ class Notes extends StatelessWidget {
             height: height,
             width: width,
             first: true,
+            delay: Duration(milliseconds: 0),
           ),
           NoteAnimator(
             height: height,
             width: width,
             duration: duration,
             first: false,
+            delay: Duration(milliseconds: (duration * 1.6).round()),
           ),
         ],
       ),
@@ -37,12 +40,21 @@ class Notes extends StatelessWidget {
 }
 
 class MusicNote extends StatelessWidget {
+  final bool single;
+
+  MusicNote({bool single}) : single = single;
+
   @override
   Widget build(BuildContext context) {
-    return Icon(
-      Icons.music_note,
-      color: Colors.white,
-    );
+    return single
+        ? Icon(
+            Icons.music_note,
+            color: Colors.white,
+          )
+        : Icon(
+            FontAwesomeIcons.itunesNote,
+            color: Colors.white,
+          );
   }
 }
 
@@ -54,9 +66,14 @@ class NoteAnimator extends StatelessWidget {
   final bool first;
   final double height;
   final double width;
+  final Duration delay;
 
   NoteAnimator(
-      {this.duration, bool first, @required this.height, @required this.width})
+      {this.duration,
+      bool first,
+      this.delay,
+      @required this.height,
+      @required this.width})
       : first = first ?? false,
         _tween = MultiTween<AniProps>()
           ..add(AniProps.width, 1.0.tweenTo(.3),
@@ -73,7 +90,7 @@ class NoteAnimator extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAnimation<MultiTweenValues<AniProps>>(
       control: CustomAnimationControl.LOOP,
-      delay: first ? (duration).milliseconds * 1.5 : null,
+      delay: delay,
       tween: _tween,
       duration: _tween.duration,
       builder: (context, child, value) {
@@ -92,7 +109,9 @@ class NoteAnimator extends StatelessWidget {
                       transform: Matrix4.skewX(value.get(AniProps.skewX)),
                       child: Transform(
                           transform: Matrix4.skewY(value.get(AniProps.skewY)),
-                          child: MusicNote()),
+                          child: MusicNote(
+                            single: first,
+                          )),
                     ),
                   ),
                 ),
